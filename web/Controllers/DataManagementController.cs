@@ -1,6 +1,5 @@
 /////////////////////////////////////////////////////////////////////
 // Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted,
@@ -38,7 +37,7 @@ namespace DesignCheck.Controllers
         /// GET TreeNode passing the ID
         /// </summary>
         [HttpGet]
-        [Route("api/forge/datamanagement")]
+        [Route("api/aps/datamanagement")]
         public async Task<IList<jsTreeNode>> GetTreeNodeAsync(string id)
         {
             Credentials = await Credentials.FromSessionAsync(base.Request.Cookies, Response.Cookies);
@@ -211,7 +210,7 @@ namespace DesignCheck.Controllers
                                     // itemUrn: used as target_urn to get document issues
                                     // versionUrn: used to launch the Viewer
                                     // viewableId: which viewable should be loaded on the Viewer
-                                    // this information will be extracted when the user click on the tree node, see ForgeTree.js:136 (activate_node.jstree event handler)
+                                    // this information will be extracted when the user click on the tree node, see tree.js:136 (activate_node.jstree event handler)
                                     string treeId = string.Format("{0}|{1}|{2}",
                                         folderContentItem.Value.id, // item urn
                                         Base64Encode(folderContentItem1.Value.relationships.tip.data.id), // version urn

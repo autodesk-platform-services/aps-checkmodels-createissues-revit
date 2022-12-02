@@ -1,6 +1,5 @@
 /////////////////////////////////////////////////////////////////////
 // Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted,
@@ -35,7 +34,7 @@ namespace DesignCheck.Controllers
         }
 
         [HttpPost]
-        [Route("api/forge/callback/designautomation/{userId}/{hubId}/{projectId}/{versionId}")]
+        [Route("api/aps/callback/designautomation/{userId}/{hubId}/{projectId}/{versionId}")]
         public IActionResult OnReadyDesignCheck(string userId, string hubId, string projectId, string versionId, [FromBody]dynamic body)
         {
             // catch any errors, we don't want to return 500

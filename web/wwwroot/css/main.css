@@ -18,7 +18,7 @@ body {
   height: calc(100vh - 150px);
 }
 
-#forgeViewer {
+#Viewer {
   width: 100%;
   height: calc(100vh - 200px);
 }

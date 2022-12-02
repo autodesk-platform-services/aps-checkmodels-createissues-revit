@@ -2,9 +2,9 @@
 <html>
 
 <head>
-  <title>Autodesk Forge Tutorial</title>
+  <title>APS Sample: Check models</title>
   <meta charset="utf-8" />
-  <link rel="shortcut icon" href="https://github.com/Autodesk-Forge/learn.forge.viewhubmodels/raw/master/img/favicon.ico">
+  <link rel="shortcut icon" href="https://cdn.autodesk.com/favicon.ico">
   <!-- Common packages: jQuery, Bootstrap, jsTree -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -12,14 +12,14 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.7/themes/default/style.min.css" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
-  <!-- Autodesk Forge Viewer files -->
+  <!-- Autodesk Viewer files -->
   <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/6.*/style.min.css" type="text/css">
   <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/6.*/viewer3D.min.js"></script>
   <!-- this project files -->
   <link href="css/main.css" rel="stylesheet" />
-  <script src="js/ForgeTree.js"></script>
-  <script src="js/ForgeViewer.js"></script>
-  <script src="js/ForgeWebhook.js"></script>
+  <script src="js/tree.js"></script>
+  <script src="js/viewer.js"></script>
+  <script src="js/webhook.js"></script>
 </head>
 
 <body>
@@ -28,8 +28,8 @@
     <div class="container-fluid">
       <ul class="nav navbar-nav left">
         <li>
-          <a href="http://developer.autodesk.com" target="_blank">
-            <img alt="Autodesk Forge" src="//developer.static.autodesk.com/images/logo_forge-2-line.png" height="20">
+          <a href="http://aps.autodesk.com" target="_blank">
+            <img alt="Autodesk Platform Services" src="https://cdn.autodesk.io/logo/black/stacked.png" height="20">
           </a>
         </li>
       </ul>
@@ -53,13 +53,13 @@
           <div id="userHubs">
             <div style="padding-top: 100px; text-align: center;">
               <button class="btn btn-lg btn-default" id="autodeskSigninButton">
-                <img src="https://github.com/Autodesk-Forge/learn.forge.viewhubmodels/raw/master/img/autodesk_text.png"
+                <img src="https://cdn.autodesk.com/autodesk.png"
                   height="20"> Sign in
               </button>
               <br />
               <br />
               <br /> You may also need to provision your<br /> BIM 360 Docs account for this app.<br />
-              <a href="https://forge.autodesk.com/blog/bim-360-docs-provisioning-forge-apps">Learn more</a>.
+              <a href="https://aps.autodesk.com/blog/bim-360-docs-provisioning-forge-apps">Learn more</a>.
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@
         <div id="webhooks" style="padding: 5px;"><button id="startMonitorFolder" class="btn btn-primary">Start
             monitoring this folder</button><button id="stopMonitorFolder" class="btn btn-danger">Stop monitoring this
             folder</button></div>
-        <div id="forgeViewer"></div>
+        <div id="Viewer"></div>
       </div>
     </div>
   </div><!-- Modal Provision BIM360  -->
@@ -82,7 +82,7 @@
           <h4 class="modal-title">Thanks for using this sample!</h4>
         </div>
         <div class="modal-body">
-          <p>To view your BIM 360 Docs files on this app please authorize my Forge Client ID with your BIM 360 Docs
+          <p>To view your BIM 360 Docs files on this app please authorize my APS Client ID with your BIM 360 Docs
             Account.
           </p>
           <p>
@@ -91,7 +91,7 @@
               <span class="glyphicon glyphicon-new-window"></span>
             </button>
           </p>
-          Use this as Forge Client ID:
+          Use this as APS Client ID:
           <div class="input-group">
             <input type="text" readonly="true" aria-describedby="CopyClientID" id="ClientID" class="form-control" value="" />
             <span class="input-group-addon" style="cursor: pointer" data-clipboard-target="#ClientID" id="CopyClientID">Copy
@@ -132,13 +132,13 @@
             <li>From the toolbar, select
               <strong>SETTINGS &gt; Apps &amp; Integrations</strong>.
               <br />
-              <img src="https://github.com/Autodesk-Forge/learn.forge.viewhubmodels/raw/master/img/provisioning/Step1.png"
+              <img src="https://cdn.autodesk.io/acc/provisioning/Step1.png"
                 width="500" />
             </li>
             <li>Click the
               <strong>Add Integration</strong> button.
               <br />
-              <img src="https://github.com/Autodesk-Forge/learn.forge.viewhubmodels/raw/master/img/provisioning/Step2.png" />
+              <img src="https://cdn.autodesk.io/acc/provisioning/Step2.png" />
             </li>
             <li>Select
               <strong>BIM 360 Account Administration</strong> and
@@ -149,14 +149,14 @@
               <strong>I’m the developer</strong>, and click
               <strong>Next</strong>.</li>
             <li>In the
-              <strong>Forge Client ID</strong> and
-              <strong>App Name</strong> fields, enter the Forge client ID and app name provided by the app retailer.
+              <strong>APS Client ID</strong> and
+              <strong>App Name</strong> fields, enter the APS client ID and app name provided by the app retailer.
             </li>
             <li>Select the
               <strong>I have saved the Account ID information securely</strong> checkbox.</li>
             <li>Click
               <strong>Save</strong>.<br />
-              <img src="https://github.com/Autodesk-Forge/learn.forge.viewhubmodels/raw/master/img/provisioning/Step3.png"
+              <img src="https://cdn.autodesk.io/acc/provisioning/Step3.png"
                 width="500" />
             </li>
             <p></p>

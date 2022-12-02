@@ -1,6 +1,5 @@
 ﻿/////////////////////////////////////////////////////////////////////
 // Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted,
@@ -25,17 +24,17 @@ function launchViewer(urn, viewableId, cb) {
       thisviewer.tearDown()
       thisviewer.finish()
       thisviewer = null
-      $("#forgeViewer").empty();
+      $("#Viewer").empty();
     }
   }
 
   var options = {
     env: 'AutodeskProduction',
-    getAccessToken: getForgeToken
+    getAccessToken: getToken
   };
   var documentId = 'urn:' + urn;
   Autodesk.Viewing.Initializer(options, function onInitialized() {
-    viewerApp = new Autodesk.Viewing.ViewingApplication('forgeViewer');
+    viewerApp = new Autodesk.Viewing.ViewingApplication('Viewer');
     viewerApp.registerViewer(viewerApp.k3D, Autodesk.Viewing.Private.GuiViewer3D);
     viewerApp.loadDocument(documentId, function (doc) {
       // We could still make use of Document.getSubItemsWithProperties()
@@ -71,9 +70,9 @@ function onItemLoadFail(errorCode) {
   console.error('onItemLoadFail() - errorCode:' + errorCode);
 }
 
-function getForgeToken(callback) {
+function getToken(callback) {
   jQuery.ajax({
-    url: '/api/forge/oauth/token',
+    url: '/api/aps/oauth/token',
     success: function (res) {
       callback(res.access_token, res.expires_in)
     }

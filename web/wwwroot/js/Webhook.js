@@ -1,6 +1,5 @@
 /////////////////////////////////////////////////////////////////////
 // Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted,
@@ -25,7 +24,7 @@ function updateCurrentMonitor(node) {
   $('#startMonitorFolder').hide();
   $('#stopMonitorFolder').hide();
   jQuery.ajax({
-    url: '/api/forge/webhook?href=' + node.id,
+    url: '/api/aps/webhook?href=' + node.id,
     success: function (res) {
       if (res.length == 0)
         $('#startMonitorFolder').show();
@@ -50,7 +49,7 @@ $(document).ready(function () {
     });
     $.ajax({
       type: "POST",
-      url: '/api/forge/webhook',
+      url: '/api/aps/webhook',
       data: { hubId: hubId, href: node[0].id },
       success: function (res) {
         updateCurrentMonitor(node[0]);
@@ -63,7 +62,7 @@ $(document).ready(function () {
     if (node.length != 1 || node[0].type !== 'folders') return;
     $.ajax({
       type: "DELETE",
-      url: '/api/forge/webhook',
+      url: '/api/aps/webhook',
       data: { href: node[0].id },
       success: function (res) {
         updateCurrentMonitor(node[0]);

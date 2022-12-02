@@ -1,6 +1,5 @@
 /////////////////////////////////////////////////////////////////////
 // Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted,
@@ -26,7 +25,7 @@ namespace DesignCheck.Controllers
     public class UserController : ControllerBase
     {
         [HttpGet]
-        [Route("api/forge/user/profile")]
+        [Route("api/aps/user/profile")]
         public async Task<JObject> GetUserProfileAsync()
         {
             Credentials credentials = await Credentials.FromSessionAsync(Request.Cookies, Response.Cookies);

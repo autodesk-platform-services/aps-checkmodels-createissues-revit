@@ -1,6 +1,5 @@
 /////////////////////////////////////////////////////////////////////
 // Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted,
@@ -41,7 +40,7 @@ namespace DesignCheck.Controllers
         {
             get
             {
-                return Credentials.GetAppSetting("FORGE_CLIENT_ID");
+                return Credentials.GetAppSetting("APS_CLIENT_ID");
             }
         }
 

@@ -1,6 +1,5 @@
 /////////////////////////////////////////////////////////////////////
 // Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted,
@@ -65,8 +64,8 @@ namespace DesignCheck.Controllers
                     new HttpClient(
                         new ForgeHandler(Microsoft.Extensions.Options.Options.Create(new ForgeConfiguration()
                         {
-                            ClientId = Credentials.GetAppSetting("FORGE_CLIENT_ID"),
-                            ClientSecret = Credentials.GetAppSetting("FORGE_CLIENT_SECRET")
+                            ClientId = Credentials.GetAppSetting("APS_CLIENT_ID"),
+                            ClientSecret = Credentials.GetAppSetting("APS_CLIENT_SECRET")
                         }))
                         {
                             InnerHandler = new HttpClientHandler()
@@ -220,7 +219,7 @@ namespace DesignCheck.Controllers
             await EnsureActivity();
 
             string resultFilename = versionId.Base64Encode() + ".txt";
-            string callbackUrl = string.Format("{0}/api/forge/callback/designautomation/{1}/{2}/{3}/{4}", Credentials.GetAppSetting("FORGE_WEBHOOK_URL"), userId, hubId, projectId, versionId.Base64Encode());
+            string callbackUrl = string.Format("{0}/api/aps/callback/designautomation/{1}/{2}/{3}/{4}", Credentials.GetAppSetting("APS_WEBHOOK_URL"), userId, hubId, projectId, versionId.Base64Encode());
 
             WorkItem workItemSpec = new WorkItem()
             {

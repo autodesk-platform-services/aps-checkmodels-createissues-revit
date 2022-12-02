@@ -1,6 +1,5 @@
 ﻿/////////////////////////////////////////////////////////////////////
 // Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted,
@@ -39,13 +38,13 @@ namespace DesignCheck.Controllers
         /// </summary>
         private Credentials Credentials { get; set; }
 
-        // with the api/forge/callback/webhook endpoint
-        // e.g. local testing with http://1234.ngrok.io/api/forge/callback/webhook
+        // with the api/aps/callback/webhook endpoint
+        // e.g. local testing with http://1234.ngrok.io/api/aps/callback/webhook
         public string CallbackUrl
         {
             get
             {
-                return Credentials.GetAppSetting("FORGE_WEBHOOK_URL") + "/api/forge/callback/webhook";
+                return Credentials.GetAppSetting("APS_WEBHOOK_URL") + "/api/aps/callback/webhook";
             }
         }
 
@@ -68,7 +67,7 @@ namespace DesignCheck.Controllers
         }
 
         [HttpGet]
-        [Route("api/forge/webhook")]
+        [Route("api/aps/webhook")]
         public async Task<IList<GetHookData.Hook>> GetHooks(string href)
         {
             string folderId = ExtractFolderIdFromHref(href);
@@ -90,7 +89,7 @@ namespace DesignCheck.Controllers
         }
 
         [HttpPost]
-        [Route("api/forge/webhook")]
+        [Route("api/aps/webhook")]
         public async Task<IActionResult> CreateHook([FromForm]HookInputData input)
         {
             string folderId = ExtractFolderIdFromHref(input.href);
@@ -109,7 +108,7 @@ namespace DesignCheck.Controllers
         }
 
         [HttpDelete]
-        [Route("api/forge/webhook")]
+        [Route("api/aps/webhook")]
         public async Task<IActionResult> DeleteHook(HookInputData input)
         {
             string folderId = ExtractFolderIdFromHref(input.href);
@@ -125,7 +124,7 @@ namespace DesignCheck.Controllers
         }
 
         [HttpPost]
-        [Route("api/forge/callback/webhook")]
+        [Route("api/aps/callback/webhook")]
         public async Task<IActionResult> WebhookCallback([FromBody]JObject body)
         {
             // catch any errors, we don't want to return 500
